@@ -1,0 +1,173 @@
+<link rel="import" href="bower_components/paper-fab/paper-fab.html"></link>
+<link rel="import" href="bower_components/paper-dialog/paper-dialog.html"></link>
+<link rel="import" href="bower_components/iron-dropdown/iron-dropdown.html"></link>
+
+<link rel="import" href="bower_components/paper-button/paper-button.html"></link>
+<link rel="import" href="bower_components/paper-input/paper-textarea.html"></link>
+<link rel="import" href="bower_components/iron-form/iron-form.html"></link>
+<link rel="import" href="bower_components/paper-listbox/paper-listbox.html"></link>
+<link rel="import" href="bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html"></link>
+<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html"></link>
+<dom-module id="panel-botones">
+	<template>
+	<script ></script>
+	<style>
+		 body{
+          width: 100%;
+          padding: 0;
+          margin:0;
+        }
+        paper-fab.add{
+          position: absolute;
+          bottom: 10%;
+          right: 10px;
+        }
+        paper-fab.search{
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+        paper-dialog-impl{
+        	display: none;
+        	
+        	text-align: center;
+			position: absolute;		
+			z-index: 999;
+			left: 25%;
+			top: 15%;
+
+        }
+        input{
+        	float:left;
+        	padding: 10px;
+        }
+        form{
+        	text-align: center;
+        	padding: 8px;
+        }
+        form div{
+        	padding: 10px;
+        }
+        h1{
+        	margin-bottom: 0;
+			text-align: center;
+        }
+        paper-dialog-scrollable{
+        	height: 100%;
+        }
+        
+	</style>
+
+		<firebase>
+		<div>
+			<paper-fab id="add" icon="add" class="add"></paper-fab>
+        	<paper-fab id="search" icon="search" class="search"></paper-fab>
+		</div>
+
+		<paper-dialog-impl id="formulario">
+			    <h1>Partido nuevo</h1>
+			    <div>
+			    	<form is="iron-form" method="get" action="/" id="basic">
+					  <paper-input name="nombre" type="text" value="{{nombre}}" label="Nombre del partido" required></paper-input>
+					  
+					  <paper-input name="lugar" type="text" label="Lugar" required></paper-input>
+					 
+					  <paper-input name="hora" type="date" label="Hora" required></paper-input>
+					  
+					  <paper-input name="n_jugadores" type="number" label="Numero de jugadores" required></paper-input>
+					  
+					  <paper-input name="edad" label="Edad" required></paper-input>
+					  <paper-input name="nivel" label="Nivel" required></paper-input>
+					  
+					  <paper-dropdown-menu label="Deporte" class="custom" id="deporte" no-label-float>
+						 <paper-listbox class="dropdown-content" id="lista_deportes">
+						    <paper-item>Fútbol</paper-item>
+						    <paper-item>Baloncesto</paper-item>
+						    <paper-item>Tenis</paper-item>
+						    <paper-item>Padel</paper-item>
+						  </paper-listbox>
+						</paper-dropdown-menu>	
+
+						<paper-textarea name="detalles" label="Detalles" type="text"></paper-textarea>	
+						<paper-input label="Contacto"></paper-input>				    
+					</form>
+			    </div>
+			    <div class="buttons">
+			    	<div><paper-button onclick="creaPartido()" id="cancel" dialog-confirm>Añadir partido</paper-button>
+			       </div>
+			    	<div><paper-button id="accept" dialog-dismiss>Cancelar</paper-button></div>
+			        
+			        
+    			</div>
+    			
+    			
+		</paper-dialog-impl>
+		
+	</template>
+</dom-module>	
+<script >
+	var config = {
+        apiKey: "AIzaSyDdBWvoAznKTJAyrAng_3sJddwDtvaZsS4",
+        authDomain: "partidos-8e8bd.firebaseapp.com",
+        databaseURL: "https://partidos-8e8bd.firebaseio.com",
+        storageBucket: "partidos-8e8bd.appspot.com",
+        messagingSenderId: "1042240948053"
+      };
+    firebase.initializeApp(config);
+    var database=firebase.database();
+	function creaPartido(){
+		nombre=$('#nombre')
+		lugar=$('#lugar')
+		hora=$('#hora')
+		edad=$('#edad')
+		nivel=$('#nivel')
+		detalles=$('#detalles')
+		contacto=$('#contacto')
+		database.ref('partidos/futbol').push({
+			nombre:nombre.nombre
+		
+
+		});
+	}
+	Polymer({
+		is:'panel-botones',
+		properties:{
+			nombre:String
+		},
+		ready:function(){
+			var add=document.getElementById("add");
+			var search=document.getElementById("search");
+			add.addEventListener("click",function(){
+				mostrarFormulario();
+				
+			});
+			search.addEventListener("click",function(){				
+			});
+			var cont=0;
+			function mostrarFormulario(){
+				var form=document.getElementById("formulario");
+				if(cont%2===0){
+					$( "#formulario" ).show("20ms","linear");
+					cont++;
+				}else{
+					$( "#formulario" ).hide("20ms","linear");
+					cont++;
+				}
+				
+			}
+			var cont2=0;
+			$("#deporte").click(function(){
+				if(cont2%2===0){
+					$("#lista_deportes").show("20ms","linear");
+
+					cont2++;
+				}else{
+					$("#lista_deportes").hide("20ms","linear");
+					cont2++;
+				}	
+			})
+		},
+	});
+
+
+</script>

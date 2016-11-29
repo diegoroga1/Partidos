@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Partido a Partido</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html"></link>
+    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html"></link>
+    <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html"></link>
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html"></link>
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html"></link>
+    <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html"></link>
+    <link rel="import" href="bower_components/paper-styles/paper-styles.html"></link>
+    <link rel="import" href="bower_components/paper-menu/paper-menu.html"></link>
+    <link rel="import" href="bower_components/paper-item/paper-item.html"></link>
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html"></link>
+    
+    <link rel="import" href="bower_components/paper-fab/paper-fab.html"></link>
+    <link rel="import" href="lista-partidos.html">
+    <link rel="import" href="panel-botones.html">
+    <link rel="import" href="menu-lateral.html">
+    
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      
+    </script>
+    <style is="custom-style">
+        body{
+          width: 100%;
+          padding: 0;
+          margin:0;
+        }
+       
+        paper-toolbar.main{
+          z-index: 0;
+      
+        }
+        #title-opciones{
+          z-index: 99999;
+        }
+        paper-fab.add{
+          position: absolute;
+          bottom: 10%;
+          right: 10px;
+        }
+        paper-fab.search{
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+ 
+  
+
+    </style>
+  </head>
+  <body>
+  
+    <paper-drawer-panel>
+    <div drawer><menu-lateral></menu-lateral></div>
+      <div main> 
+        <paper-toolbar class="main">
+            <paper-icon-button onclick="toggle()" id="menu-icon" paper-drawer-toggle icon="menu"></paper-icon-button>
+           
+            <span id="title-home" title >Partidos</span>
+            <paper-icon-button icon="refresh"></paper-icon-button>
+        </paper-toolbar>
+        <div><lista-partidos></lista-partidos></div>
+        <panel-botones></panel-botones>
+      </div>
+    </paper-drawer-panel>
+    
+  </body>
+</html>
+<script >
+    function toggle(){
+       $("#title-home").css("color","white");
+
+    }
+   
+
+</script>

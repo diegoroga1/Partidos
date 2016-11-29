@@ -1,0 +1,24 @@
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="tarjeta-partidos.html">
+
+<dom-module id="lista-partidos">
+	<template>
+		<style></style>
+		<div><tarjeta-partidos nombre="DRG" edad="12"></tarjeta-partidos></div>
+
+		<template is="dom-repeat"  id="partidos">
+		        <div><tarjeta-partidos nombre="DRG" edad="12"></tarjeta-partidos></div>
+
+	</template>
+	</template>
+
+
+</dom-module>	
+<script >
+	Polymer({
+		is:'lista-partidos'
+	});
+
+</script>
+
+

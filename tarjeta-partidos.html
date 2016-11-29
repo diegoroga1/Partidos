@@ -1,0 +1,104 @@
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+
+<dom-module id="tarjeta-partidos">
+	<link rel="stylesheet" type="text/css" href="tarjeta-partidos.css">
+	<template>
+		<style >
+			:host{
+				display: block;
+			}
+			paper-card{
+				width: 100%;
+			} 
+			paper-card img{
+				width: 50px;
+				border-radius: 50%;
+			}
+			#icono-deporte{
+				width: 50px;
+			}
+			#icono-deporte img{
+				
+				width: 30px;
+			}
+			
+			.circle{
+				display: inline-block;
+				float: right;width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background-color: var(--paper-green-500);
+			}
+			.header{
+				float: left;
+				border-right: 1px solid rgba(0,0,0,0.2);
+			}
+			paper-button{
+				float: right;
+			}
+			p{
+				margin:0;
+				padding: 0;
+			}
+			.f1 p{
+				float:left;
+				padding-right: 20px;
+			}
+			.f2{
+				float: left;
+				width: 100%;
+			}
+			.f2 p{
+				float: left;
+				padding-right: 20px;
+			}
+
+		</style>
+
+		<div>
+			   <paper-card id="card" elevation="1" animated-shadow="true">
+					<div class="card-content layout horizontal center">
+						<div id="icono-deporte"> 
+						
+						<img   src="icons/tenis.png">
+						<p>Tenis</p>
+						</div>
+						<div class="flex-auto">
+							<div class="f1">
+								<p>Nombre</p>
+								<p>Lugar y Hora</p>
+							</div>
+							<div class="f2">
+								<p>Nivel</p>
+								<p>Edad</p>
+								<p>Jugadores</p>
+							</div>
+							<span class="circle"></span>
+						</div>
+					</div>
+				</paper-card>
+		</div>
+		
+	</template>
+
+
+</dom-module>	
+<script >
+	Polymer({
+		is:'tarjeta-partidos',
+		properties:{
+			nombre:String,
+			lugar:String,
+			hora:Number,
+			deporte:String,
+			edad:Number,
+			nivel:String,
+			jugadores:Number,
+			contacto:Number
+		},
+		ready:function(){
+			console.log("tarjeta de partido");
+		}
+	});
+
+</script>

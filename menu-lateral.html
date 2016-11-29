@@ -1,0 +1,67 @@
+<link rel="import" href="bower_components/polymer/polymer.html"></link>
+    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html"></link>
+    
+    <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html"></link>
+   
+    <link rel="import" href="bower_components/paper-menu/paper-menu.html"></link>
+    <link rel="import" href="bower_components/paper-item/paper-item.html"></link>
+
+	<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html"></link>
+<dom-module id="menu-lateral">
+    <style >
+
+		 paper-toolbar.drawer{
+          z-index: 10;
+          background-color: black;
+        } 
+         #title-opciones{
+          z-index: 99999;
+        }
+         #foto_perfil{
+		    width: 80px;
+		    height: 80px;
+		    text-align: center;
+		    border-radius: 50%;
+		    background-color: blue;
+		    margin:0 auto;
+  		}
+			
+		</style>
+	<template>
+		 
+          <paper-toolbar class="drawer">
+              <span id="title-opciones" title>{{title}}</span>
+          </paper-toolbar>
+          <paper-menu class="dropdown-content">
+                  <paper-item>
+                    <paper-item-body id="foto_perfil">
+                          <div > 
+                          <img  class="flex-auto">
+                          </div>
+                    </paper-item-body>
+                    	
+                  </paper-item>
+                  <paper-item>Settings</paper-item>
+                  <paper-item>Help</paper-item>
+          </paper-menu>
+      
+		
+	</template>
+
+<script >
+	Polymer({
+		is:'menu-lateral',
+		properties:{
+			title:{
+				type:String,
+				value:"Opciones"
+			}
+		},
+		ready:function(){
+			console.log("menu opciones");
+		}
+	});
+
+</script>
+</dom-module>	
